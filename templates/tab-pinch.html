@@ -1,0 +1,84 @@
+<ion-view view-title="DIEP-W: Pinch">
+  <ion-content>
+    <div class="list card">
+      <div class="item item-body">
+		<div>
+			<!--img src="img/figure_1024x500.png" style="width: 100%;"-->
+			<img src="img/figure_new.png" style="width: 100%;">
+        </div>
+      </div>
+	  <div style="width: 100%; text-align: right;">
+		<div style="width: 150px; display: inline-block;vertical-align: middle;">
+		  <button ng-click="openModalTemplate('bmi-modal')" class="button button-energized">BMI Calculator</button>
+		</div>
+	  </div>
+	  <div style="width: 100%; text-align: center;">
+	    <img src="img/icon_info.png" style="width: 30px; vertical-align: middle;" ng-click="openModalTemplate('rmm-pinch-popover')">
+		<div style="width: 50px; display: inline-block;vertical-align: middle;">R. mm</div>
+	  	<div class="item item-input-inset" style="width: 70px;display: inline-block;vertical-align: middle;padding-left: 0px;padding-right: 0px;">
+	  	  <label class="item-input-wrapper">
+	  	  	<input type="number" id="rmm" name="rmm" style="width:100px;" placeholder="Rmm" ng-model="data.rmm"/>
+	  	  </label>
+	  	</div>
+		<div style="width: 50px; display: inline-block;vertical-align: middle;">BMI</div>
+	  	<div class="item item-input-inset" style="width: 70px;display: inline-block;vertical-align: middle;padding-left: 0px;padding-right: 0px;">
+	  	  <label class="item-input-wrapper">
+	  	  	<input type="number" id="bmi" name="bmi" style="width:100px;" placeholder="BMI" ng-model="data.bmi" />
+	  	  </label>
+	  	</div>
+	  </div>
+	  <div style="width: 100%; text-align: center;">
+	    <img src="img/icon_info.png" style="width: 30px; vertical-align: middle;" ng-click="openModalTemplate('lmm-pinch-popover')">
+		<div style="width: 50px; display: inline-block;vertical-align: middle;">L. mm</div>
+	  	<div class="item item-input-inset" style="width: 70px;display: inline-block;vertical-align: middle;padding-left: 0px;padding-right: 0px;">
+	  	  <label class="item-input-wrapper">
+	  	  	<input type="number" id="lmm" name="lmm" style="width:100px;" placeholder="Lmm" ng-model="data.lmm" />
+	  	  </label>
+	  	</div>
+		<div style="width: 50px; display: inline-block;vertical-align: middle;">H. cm</div>
+		<div class="item item-input-inset" style="width: 70px;display: inline-block;vertical-align: middle;padding-left: 0px;padding-right: 0px;">
+	  	  <label class="item-input-wrapper">
+	  	  	<input type="number" id="hcm" name="hcm" style="width:100px;" placeholder="Hcm" ng-model="data.hcm" />
+	  	  </label>
+	  	</div>
+	  </div>
+	  <div style="width: 100%; text-align: center;">
+	    <img src="img/icon_info.png" style="width: 30px; vertical-align: middle;" ng-click="openModalTemplate('imm-pinch-popover')">
+		<div style="width: 50px; display: inline-block;vertical-align: middle;">I. mm</div>
+		<div class="item item-input-inset" style="width: 70px;display: inline-block;vertical-align: middle;padding-left: 0px;padding-right: 0px;">
+	  	  <label class="item-input-wrapper">
+	  	  	<input type="number" id="imm" name="imm" style="width:100px;" placeholder="Imm" ng-model="data.imm"/>
+	  	  </label>
+	  	</div>
+		<div style="width: 50px; display: inline-block;vertical-align: middle;">W. cm</div>
+	  	<div class="item item-input-inset" style="width: 70px;display: inline-block;vertical-align: middle;padding-left: 0px;padding-right: 0px;">
+	  	  <label class="item-input-wrapper">
+	  	  	<input type="number" id="wcm" name="wcm" style="width:100px;" placeholder="Wcm" ng-model="data.wcm"/>
+	  	  </label>
+	  	</div>
+	  </div>
+	  <div style="width: 100%; text-align: center;">
+		<div style="width: 100px; display: inline-block;vertical-align: middle;">Flap Weight. g</div>
+		<div class="item item-input-inset" style="width: 120px;display: inline-block;vertical-align: middle;padding-left: 0px;padding-right: 0px;">
+	  	  <label class="item-input-wrapper">
+	  	  	<input type="text" id="flap" name="flap" style="width:100px;" placeholder="FlapWeight, g" ng-model="data.flap" />
+	  	  </label>
+	  	</div>
+	  </div>
+	  <div style="width: 100%; text-align: center;">
+	  <button class="button button-energized" style="display: inline-block; margin-left: auto; margin-right: auto;" ng-click="reset()">Reset</button>
+	  <button class="button button-energized" style="display: inline-block; margin-left: auto; margin-right: auto;" ng-click="calculate()">Calculate</button> 
+	  </div>
+    </div>
+    <div class="list card">
+      <div class="item item-body">
+		<div>
+			<p style="text-align: center;">Department of plastic surgery</p>
+		</div>
+		<div>
+			<img src="img/smc.png" style="display: block; margin-left: auto; margin-right: auto;">
+		</div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
