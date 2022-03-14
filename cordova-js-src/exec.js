@@ -106,7 +106,7 @@ function androidExec(success, fail, service, action, args) {
 }
 
 androidExec.init = function() {
-    bridgeSecret = +prompt('', 'gap_init:' + nativeToJsBridgeMode);
+    bridgeSecret = null; // +prompt('', 'gap_init:' + nativeToJsBridgeMode);
     channel.onNativeReady.fire();
 };
 
