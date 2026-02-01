@@ -193,6 +193,7 @@ class _PinchScreenState extends State<PinchScreen> {
                       _bmiController.text = bmi.toStringAsFixed(1);
                     });
                   },
+                  nextFocusNode: _immFocus,
                 ),
                 const SizedBox(height: 16),
                 Card(

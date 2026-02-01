@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class InlineBMICalculator extends StatefulWidget {
   final Function(double) onBMICalculated;
+  final FocusNode? nextFocusNode;
   
   const InlineBMICalculator({
     super.key,
     required this.onBMICalculated,
+    this.nextFocusNode,
   });
 
   @override
@@ -124,11 +126,15 @@ class _InlineBMICalculatorState extends State<InlineBMICalculator> {
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: true,
                           ),
-                          textInputAction: TextInputAction.done,
+                          textInputAction: TextInputAction.next,
                           onChanged: (_) => _calculateBMI(),
                           onSubmitted: (_) {
                             _calculateBMI();
-                            FocusScope.of(context).unfocus();
+                            if (widget.nextFocusNode != null) {
+                              widget.nextFocusNode!.requestFocus();
+                            } else {
+                              FocusScope.of(context).unfocus();
+                            }
                           },
                         ),
                       ),

@@ -195,6 +195,7 @@ class _CTScreenState extends State<CTScreen> {
                       _bmiController.text = bmi.toStringAsFixed(1);
                     });
                   },
+                  nextFocusNode: _immFocus,
                 ),
                 const SizedBox(height: 16),
                 Card(
