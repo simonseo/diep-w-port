@@ -2,7 +2,13 @@
 
 **Estimate the Weight of the DIEP Flap in Breast Reconstruction**
 
-A mobile application for calculating DIEP (Deep Inferior Epigastric Artery Perforator) flap weight using validated medical formulas.
+A cross-platform application (Web, iOS, Android) for calculating DIEP (Deep Inferior Epigastric Artery Perforator) flap weight using validated medical formulas.
+
+## 🌐 Live Demo
+
+**Try it now:** [https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)
+
+Available as a Progressive Web App (PWA) - install directly from your browser!
 
 ## 📱 About
 
@@ -10,12 +16,19 @@ This app helps surgeons estimate DIEP flap weight before breast reconstruction s
 
 - **Pinch Method** - Manual measurements
 - **CT Method** - CT scan measurements
+- **BMI Calculator** - Built-in BMI calculation tool
 
 Based on peer-reviewed research: [Woo et al., 2016](https://pubmed.ncbi.nlm.nih.gov/27050336/)
 
 ## 🚀 Quick Start
 
-### Install Flutter
+### Use the Web App
+
+Simply visit: **[https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)**
+
+### Build for Mobile
+
+#### Install Flutter
 
 ```bash
 # Download Flutter (choose your platform)
@@ -24,7 +37,7 @@ Based on peer-reviewed research: [Woo et al., 2016](https://pubmed.ncbi.nlm.nih.
 brew install --cask flutter
 ```
 
-### Build the App
+#### Build Android APK
 
 ```bash
 cd flutter
@@ -34,7 +47,13 @@ flutter build apk --release
 
 Your APK will be at: `build/app/outputs/flutter-apk/app-release.apk`
 
-### Run on Device
+#### Build for Web
+
+```bash
+flutter build web --release --web-renderer canvaskit --base-href /diep-w-port/
+```
+
+#### Run on Device
 
 ```bash
 flutter run
