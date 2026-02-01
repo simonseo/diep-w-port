@@ -38,6 +38,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   // Formula card expansion state
   bool _isFormulaExpanded = false;
+  
+  // Suggested weights expansion state
+  bool _isSuggestedWeightsExpanded = false;
 
   @override
   void dispose() {
@@ -257,6 +260,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     
                     // 7. Result Section
                     _buildResultSection(),
+                    const SizedBox(height: 16),
+                    
+                    // 8. Suggested Weights Section
+                    _buildSuggestedWeightsSection(),
                   ],
                 ),
               ),
@@ -703,6 +710,94 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildSuggestedWeightsSection() {
+    final calculatedWeight = double.tryParse(_flapController.text);
+    
+    // Only show if there's a calculated weight
+    if (calculatedWeight == null || calculatedWeight == 0) {
+      return const SizedBox.shrink();
+    }
+
+    final weight50 = calculatedWeight * 0.5;
+    final weight60 = calculatedWeight * 0.6;
+    final weight70 = calculatedWeight * 0.7;
+
+    return Card(
+      child: Column(
+        children: [
+          ListTile(
+            leading: const Icon(Icons.tips_and_updates_outlined, color: Color(0xFF4A90E2)),
+            title: const Text(
+              'Suggested Weights',
+              style: TextStyle(fontWeight: FontWeight.w600),
+            ),
+            trailing: IconButton(
+              icon: Icon(_isSuggestedWeightsExpanded ? Icons.expand_less : Icons.expand_more),
+              onPressed: () {
+                setState(() {
+                  _isSuggestedWeightsExpanded = !_isSuggestedWeightsExpanded;
+                });
+              },
+            ),
+            onTap: () {
+              setState(() {
+                _isSuggestedWeightsExpanded = !_isSuggestedWeightsExpanded;
+              });
+            },
+          ),
+          if (_isSuggestedWeightsExpanded)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              child: Column(
+                children: [
+                  const Divider(),
+                  const SizedBox(height: 8),
+                  _buildSuggestedWeightRow('50%', weight50),
+                  const SizedBox(height: 8),
+                  _buildSuggestedWeightRow('60%', weight60),
+                  const SizedBox(height: 8),
+                  _buildSuggestedWeightRow('70%', weight70),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSuggestedWeightRow(String percentage, double weight) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            percentage,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          Text(
+            '${weight.toStringAsFixed(1)} g',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+        ],
       ),
     );
   }
