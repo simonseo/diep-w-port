@@ -56,9 +56,8 @@ class _MeasurementInputState extends State<MeasurementInput> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.onInfoTap != null)
-          InkWell(
+          GestureDetector(
             onTap: widget.onInfoTap,
-            borderRadius: BorderRadius.circular(4),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: Row(
