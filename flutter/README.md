@@ -1,51 +1,47 @@
-# DIEP-W
+# DIEP-W Flutter App
 
-**Estimate the Weight of the DIEP Flap in Breast Reconstruction**
+DIEP (Deep Inferior Epigastric Artery Perforator) flap weight estimation calculator for breast reconstruction surgery.
 
-A cross-platform application (Web, iOS, Android) for calculating DIEP (Deep Inferior Epigastric Artery Perforator) flap weight using validated medical formulas.
+## Live Demo
 
-## 🌐 Live Demo
+**[https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)**
 
-**Try it now:** [https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)
+Available as a Progressive Web App (PWA) - install directly from your browser.
 
-Available as a Progressive Web App (PWA) - install directly from your browser!
+## About
 
-## 📱 About
+This app helps surgeons estimate DIEP flap weight before breast reconstruction surgery using three methods:
 
-This app helps surgeons estimate DIEP flap weight before breast reconstruction surgery using two methods:
-
-- **Pinch Method** - Manual measurements
+- **Pinch Method** - Manual tissue measurements
 - **CT Method** - CT scan measurements
-- **BMI Calculator** - Built-in BMI calculation tool
+- **BMI Calculator** - Body mass index calculation tool
 
 Based on peer-reviewed research: [Woo et al., 2016](https://pubmed.ncbi.nlm.nih.gov/27050336/)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Use the Web App
 
-Simply visit: **[https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)**
+Visit: **[https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)**
 
 ### Build for Mobile
 
-#### Install Flutter
+#### Prerequisites
 
-```bash
-# Download Flutter (choose your platform)
-# macOS: https://docs.flutter.dev/get-started/install/macos
-# Or use Homebrew:
-brew install --cask flutter
-```
+- Flutter SDK installed
+- Android Studio (for Android builds)
+- Xcode (for iOS builds - macOS only)
+
+See [SETUP.md](SETUP.md) for detailed installation instructions.
 
 #### Build Android APK
 
 ```bash
-cd flutter
 flutter pub get
 flutter build apk --release
 ```
 
-Your APK will be at: `build/app/outputs/flutter-apk/app-release.apk`
+Output: `build/app/outputs/flutter-apk/app-release.apk`
 
 #### Build for Web
 
@@ -59,9 +55,9 @@ flutter build web --release --web-renderer canvaskit --base-href /diep-w-port/
 flutter run
 ```
 
-## 📖 How to Use
+## How to Use
 
-1. Choose **Pinch** or **CT** tab
+1. Select **Pinch** or **CT** tab
 2. Enter measurements:
    - BMI (or use built-in calculator)
    - R, L, I (thickness in mm)
@@ -69,7 +65,7 @@ flutter run
 3. Tap **Calculate**
 4. View estimated flap weight in grams
 
-## 🔬 Medical Formulas
+## Medical Formulas
 
 ### Pinch Method
 ```
@@ -87,26 +83,28 @@ Weight (g) = -435 + 11.61×BMI - 23.23×(R+L)/2 + 8.74×I + 37.72×H - 4.63×W +
 - H = Flap height (cm)
 - W = Flap width (cm)
 
-## 📚 Documentation
+## Documentation
 
-- **TECHNICAL.md** - Complete technical documentation
-- **SETUP.md** - Detailed setup instructions
-- **DEPLOYMENT.md** - Build and deployment guide
+- [SETUP.md](SETUP.md) - Installation and setup instructions
+- [DEPLOYMENT.md](DEPLOYMENT.md) - Deployment guide for GitHub Pages
+- [TECHNICAL.md](TECHNICAL.md) - Technical implementation details
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 This app is for **qualified medical professionals only**. Use clinical judgment and verify all measurements. Not a substitute for professional medical advice.
 
-## 🎓 Credits
+## Credits
 
 **Original Research:**
-- Kyongje Woo, MD
+- Kyongje Woo, MD, PhD
 - Goohyun Mun, MD
 
 *Department of Plastic Surgery, Samsung Medical Center*
 
-**Citation:** Woo KJ, et al. "A Novel Method to Estimate the Weight of the DIEP Flap in Breast Reconstruction." *J Reconstr Microsurg.* 2016;32(7):520-7. [PMID: 27050336](https://pubmed.ncbi.nlm.nih.gov/27050336/)
+**Citation:** 
 
-## 📄 License
+Woo KJ, Kim EJ, Lee KT, Mun GH. "A Novel Method to Estimate the Weight of the DIEP Flap in Breast Reconstruction: DIEP-W, a Simple Calculation Formula Using Paraumbilical Flap Thickness." *Journal of Reconstructive Microsurgery*. 2016 Sep;32(7):520-7. PMID: 27050336
 
-For educational and clinical use. Please cite the original research.
+## License
+
+MIT License - For educational and clinical use.

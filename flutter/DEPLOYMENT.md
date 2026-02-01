@@ -1,59 +1,56 @@
-# DIEP-W Flutter App - Deployment Guide
+# Deployment Guide
 
-## 🌐 Current Deployment
+## Current Deployment
 
 **Live URL:** [https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)
 
 **Repository:** [https://github.com/simonseo/diep-w-port](https://github.com/simonseo/diep-w-port)
 
-**Deployment Method:** GitHub Pages using `/docs` folder from `main` branch
+**Method:** GitHub Pages using `/docs` folder from `main` branch
 
-## Current Setup
+## Repository Structure
 
-The repository is organized as:
 ```
 diep-w-port/
 ├── docs/           # GitHub Pages deployment (copy of flutter/build/web/)
 ├── flutter/        # Flutter app source + build
-│   ├── build/web/  # Production build (committed)
+│   ├── build/web/  # Production build
 │   └── ...
 └── cordova/        # Legacy app (archived)
 ```
 
 ## Updating the Deployment
 
-### Step 1: Make Changes
-Edit your Flutter code in the `flutter/` directory
+### 1. Make Changes
+Edit Flutter code in the `flutter/` directory
 
-### Step 2: Rebuild
+### 2. Rebuild
 ```bash
-cd flutter
-~/flutter/bin/flutter build web --release --web-renderer canvaskit --base-href /diep-w-port/
+flutter build web --release --web-renderer canvaskit --base-href /diep-w-port/
 ```
 
-**IMPORTANT:** Always include `--base-href /diep-w-port/` for GitHub Pages subpath deployment!
+**Important:** Always include `--base-href /diep-w-port/` for GitHub Pages subpath deployment.
 
-### Step 3: Copy to Repository
+### 3. Copy to Docs
 ```bash
-# From the repository root
-cd /path/to/diep-w-port-temp
+# From repository root
 rm -rf docs
 cp -r flutter/build/web docs
 ```
 
-### Step 4: Commit and Push
+### 4. Commit and Push
 ```bash
 git add -A
 git commit -m "Update deployment: [describe changes]"
 git push origin main
 ```
 
-GitHub Pages will automatically rebuild and deploy within 1-2 minutes.
+GitHub Pages will automatically rebuild within 1-2 minutes.
 
-### Step 5: Verify
-Wait ~2 minutes, then check: [https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)
+### 5. Verify
+Check the live site: [https://simonseo.github.io/diep-w-port/](https://simonseo.github.io/diep-w-port/)
 
-## GitHub Pages Deployment
+## Alternative Deployment Options
 
 ### Prerequisites
 - GitHub account

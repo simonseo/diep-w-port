@@ -1,22 +1,19 @@
-# DIEP-W Flutter - Setup Instructions
+# Setup Instructions
 
 ## Prerequisites
-
-Before building the app, you need:
 
 1. **Flutter SDK** installed and configured
 2. **Android Studio** (for Android builds)
 3. **Xcode** (for iOS builds - macOS only)
 
-## Step 1: Install Flutter
+## Install Flutter
 
 ### macOS
 
 Download and install Flutter:
 
 ```bash
-# Option 1: Direct download
-cd ~
+# Download from official site
 curl -O https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.24.5-stable.zip
 unzip flutter_macos_arm64_3.24.5-stable.zip
 rm flutter_macos_arm64_3.24.5-stable.zip
@@ -28,7 +25,7 @@ Add Flutter to your PATH by adding this to your `~/.zshrc` or `~/.bash_profile`:
 export PATH="$PATH:$HOME/flutter/bin"
 ```
 
-Then reload your shell:
+Reload your shell:
 ```bash
 source ~/.zshrc  # or source ~/.bash_profile
 ```
@@ -44,7 +41,7 @@ flutter doctor
 brew install --cask flutter
 ```
 
-## Step 2: Install Android Studio
+## Install Android Studio
 
 1. Download from: https://developer.android.com/studio
 2. Install Android SDK and Android SDK Command-line Tools
@@ -53,53 +50,43 @@ brew install --cask flutter
    flutter doctor --android-licenses
    ```
 
-## Step 3: Setup the Project
-
-Navigate to the project directory:
-```bash
-cd diep_w_flutter
-```
+## Setup the Project
 
 Get dependencies:
 ```bash
 flutter pub get
 ```
 
-## Step 4: Build the APK
+## Build Options
 
-### Option A: Use the build script (recommended)
-
-```bash
-./build.sh
-```
-
-Then choose option 2 for release APK or option 1 for debug APK.
-
-### Option B: Manual build commands
-
-**Debug APK:**
+### Debug APK
 ```bash
 flutter build apk --debug
 ```
 
-**Release APK:**
+### Release APK
 ```bash
 flutter build apk --release
 ```
 
-**App Bundle (for Play Store):**
+### App Bundle (for Play Store)
 ```bash
 flutter build appbundle --release
 ```
 
-## Step 5: Install on Device
+### Web Build
+```bash
+flutter build web --release --web-renderer canvaskit
+```
 
-### Via USB:
+## Install on Device
+
+### Via USB
 ```bash
 flutter install
 ```
 
-### Manual installation:
+### Manual Installation
 1. Enable "Unknown sources" on your Android device
 2. Transfer the APK file from `build/app/outputs/flutter-apk/`
 3. Open the APK on your device to install
@@ -122,7 +109,7 @@ flutter config --android-sdk /path/to/android/sdk
 - For emulator: Launch Android emulator from Android Studio
 - For physical device: Enable USB debugging in Developer Options
 
-### Build errors
+### Build Errors
 Clean and rebuild:
 ```bash
 flutter clean
@@ -130,18 +117,7 @@ flutter pub get
 flutter build apk --release
 ```
 
-## Next Steps
+## Resources
 
-After successful build:
-
-1. **Test the app** on a device or emulator
-2. **Distribute the APK** to users or upload to Play Store
-3. **Sign the app** for production release (see Flutter documentation)
-
-## Support
-
-For Flutter-specific issues, see:
 - Flutter documentation: https://flutter.dev/docs
 - Flutter community: https://flutter.dev/community
-
-For app-specific issues, refer to the medical publication cited in README.md
