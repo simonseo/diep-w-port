@@ -13,6 +13,7 @@ class MeasurementInput extends StatefulWidget {
   final VoidCallback? onFieldSubmitted;
   final FocusNode? focusNode;
   final ValueChanged<String>? onChanged;
+  final FormFieldValidator<String>? validator;
 
   const MeasurementInput({
     super.key,
@@ -27,6 +28,7 @@ class MeasurementInput extends StatefulWidget {
     this.onFieldSubmitted,
     this.focusNode,
     this.onChanged,
+    this.validator,
   });
 
   @override
@@ -126,7 +128,7 @@ class _MeasurementInputState extends State<MeasurementInput> {
               vertical: 12,
             ),
           ),
-          validator: widget.readOnly
+          validator: widget.validator ?? (widget.readOnly
               ? null
               : (value) {
                   if (value == null || value.isEmpty) {
@@ -136,7 +138,7 @@ class _MeasurementInputState extends State<MeasurementInput> {
                     return 'Invalid';
                   }
                   return null;
-                },
+                }),
         ),
       ],
     );

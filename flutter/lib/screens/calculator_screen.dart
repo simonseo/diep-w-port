@@ -416,6 +416,23 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
                     onFieldSubmitted: () => _weightFocus.requestFocus(),
                     onChanged: (_) => _calculateBMIFromHeightWeight(),
+                    validator: (value) {
+                      // If BMI is filled, height/weight are optional
+                      if (_bmiController.text.isNotEmpty) {
+                        if (value != null && value.isNotEmpty && double.tryParse(value) == null) {
+                          return 'Invalid';
+                        }
+                        return null;
+                      }
+                      // If BMI is empty, height/weight are required
+                      if (value == null || value.isEmpty) {
+                        return 'Required';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return 'Invalid';
+                      }
+                      return null;
+                    },
                     onInfoTap: () => showInfoDialog(
                       context,
                       'Height',
@@ -433,6 +450,23 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
                     onFieldSubmitted: () => _bmiFocus.requestFocus(),
                     onChanged: (_) => _calculateBMIFromHeightWeight(),
+                    validator: (value) {
+                      // If BMI is filled, height/weight are optional
+                      if (_bmiController.text.isNotEmpty) {
+                        if (value != null && value.isNotEmpty && double.tryParse(value) == null) {
+                          return 'Invalid';
+                        }
+                        return null;
+                      }
+                      // If BMI is empty, height/weight are required
+                      if (value == null || value.isEmpty) {
+                        return 'Required';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return 'Invalid';
+                      }
+                      return null;
+                    },
                     onInfoTap: () => showInfoDialog(
                       context,
                       'Weight',
@@ -451,6 +485,23 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onFieldSubmitted: () => _rmmFocus.requestFocus(),
               onChanged: (_) => _onBMIManuallyEdited(),
+              validator: (value) {
+                // If height and weight are both filled, BMI is optional (it's auto-calculated)
+                if (_heightController.text.isNotEmpty && _weightController.text.isNotEmpty) {
+                  if (value != null && value.isNotEmpty && double.tryParse(value) == null) {
+                    return 'Invalid';
+                  }
+                  return null;
+                }
+                // If height/weight are empty, BMI is required
+                if (value == null || value.isEmpty) {
+                  return 'Required';
+                }
+                if (double.tryParse(value) == null) {
+                  return 'Invalid';
+                }
+                return null;
+              },
               onInfoTap: () => showInfoDialog(
                 context,
                 'Body Mass Index (BMI)',
