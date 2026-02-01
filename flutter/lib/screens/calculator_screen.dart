@@ -24,6 +24,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   final TextEditingController _lmmController = TextEditingController();
   final TextEditingController _immController = TextEditingController();
   final TextEditingController _bmiController = TextEditingController();
+  final TextEditingController _heightController = TextEditingController();
+  final TextEditingController _weightController = TextEditingController();
   final TextEditingController _hcmController = TextEditingController();
   final TextEditingController _wcmController = TextEditingController();
   final TextEditingController _flapController = TextEditingController();
@@ -33,14 +35,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   final FocusNode _lmmFocus = FocusNode();
   final FocusNode _immFocus = FocusNode();
   final FocusNode _bmiFocus = FocusNode();
+  final FocusNode _heightFocus = FocusNode();
+  final FocusNode _weightFocus = FocusNode();
   final FocusNode _hcmFocus = FocusNode();
   final FocusNode _wcmFocus = FocusNode();
-
-  // Formula card expansion state
-  bool _isFormulaExpanded = false;
-  
-  // Suggested weights expansion state
-  bool _isSuggestedWeightsExpanded = false;
 
   @override
   void dispose() {
@@ -48,6 +46,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     _lmmController.dispose();
     _immController.dispose();
     _bmiController.dispose();
+    _heightController.dispose();
+    _weightController.dispose();
     _hcmController.dispose();
     _wcmController.dispose();
     _flapController.dispose();
@@ -55,6 +55,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     _lmmFocus.dispose();
     _immFocus.dispose();
     _bmiFocus.dispose();
+    _heightFocus.dispose();
+    _weightFocus.dispose();
     _hcmFocus.dispose();
     _wcmFocus.dispose();
     super.dispose();
@@ -146,9 +148,31 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       _lmmController.clear();
       _immController.clear();
       _bmiController.clear();
+      _heightController.clear();
+      _weightController.clear();
       _hcmController.clear();
       _wcmController.clear();
       _flapController.clear();
+    });
+  }
+
+  void _calculateBMIFromHeightWeight() {
+    final height = double.tryParse(_heightController.text);
+    final weight = double.tryParse(_weightController.text);
+
+    if (height != null && weight != null && height > 0) {
+      final bmi = weight / ((height / 100) * (height / 100));
+      setState(() {
+        _bmiController.text = bmi.toStringAsFixed(1);
+      });
+    }
+  }
+
+  void _onBMIManuallyEdited() {
+    // When BMI is manually edited, clear height and weight
+    setState(() {
+      _heightController.clear();
+      _weightController.clear();
     });
   }
 
@@ -234,36 +258,26 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 child: _buildMethodToggle(),
               ),
               
-              // 3. Formula Card (collapsible)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: _buildFormulaCard(),
-              ),
-              
-              // 4-7. Input sections
+              // 3. Input sections
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // 4. BMI Section
+                    // 3. BMI Section
                     _buildBMISection(),
                     const SizedBox(height: 16),
                     
-                    // 5. Tissue Thickness Section
+                    // 4. Tissue Thickness Section
                     _buildTissueThicknessSection(),
                     const SizedBox(height: 16),
                     
-                    // 6. Flap Dimensions Section
+                    // 5. Flap Dimensions Section
                     _buildFlapDimensionsSection(),
                     const SizedBox(height: 16),
                     
-                    // 7. Result Section
+                    // 6. Result Section
                     _buildResultSection(),
-                    const SizedBox(height: 16),
-                    
-                    // 8. Suggested Weights Section
-                    _buildSuggestedWeightsSection(),
                   ],
                 ),
               ),
@@ -337,6 +351,18 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 12),
             ),
+            const SizedBox(height: 12),
+            Text(
+              'Formula: $_formulaText',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 10,
+                fontFamily: 'monospace',
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.grey[700]
+                    : Colors.grey[400],
+              ),
+            ),
           ],
         ),
       ),
@@ -364,53 +390,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
 
-  Widget _buildFormulaCard() {
-    return Card(
-      child: Column(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.functions, color: Color(0xFF4A90E2)),
-            title: const Text(
-              'Formula',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            trailing: IconButton(
-              icon: Icon(_isFormulaExpanded ? Icons.expand_less : Icons.expand_more),
-              onPressed: () {
-                setState(() {
-                  _isFormulaExpanded = !_isFormulaExpanded;
-                });
-              },
-            ),
-            onTap: () {
-              setState(() {
-                _isFormulaExpanded = !_isFormulaExpanded;
-              });
-            },
-          ),
-          if (_isFormulaExpanded)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              child: Column(
-                children: [
-                  const Divider(),
-                  const SizedBox(height: 8),
-                  Text(
-                    _formulaText,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 11,
-                      fontFamily: 'monospace',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildBMISection() {
     return Card(
       child: Padding(
@@ -426,13 +405,42 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            InlineBMICalculator(
-              onBMICalculated: (bmi) {
-                setState(() {
-                  _bmiController.text = bmi.toStringAsFixed(1);
-                });
-              },
-              nextFocusNode: _immFocus,
+            Row(
+              children: [
+                Expanded(
+                  child: MeasurementInput(
+                    controller: _heightController,
+                    focusNode: _heightFocus,
+                    label: 'Height (cm)',
+                    hint: 'Height',
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    onFieldSubmitted: () => _weightFocus.requestFocus(),
+                    onChanged: (_) => _calculateBMIFromHeightWeight(),
+                    onInfoTap: () => showInfoDialog(
+                      context,
+                      'Height',
+                      'Enter height in centimeters for BMI calculation.',
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: MeasurementInput(
+                    controller: _weightController,
+                    focusNode: _weightFocus,
+                    label: 'Weight (kg)',
+                    hint: 'Weight',
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    onFieldSubmitted: () => _bmiFocus.requestFocus(),
+                    onChanged: (_) => _calculateBMIFromHeightWeight(),
+                    onInfoTap: () => showInfoDialog(
+                      context,
+                      'Weight',
+                      'Enter weight in kilograms for BMI calculation.',
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 16),
             MeasurementInput(
@@ -442,10 +450,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               hint: 'BMI',
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onFieldSubmitted: () => _immFocus.requestFocus(),
+              onChanged: (_) => _onBMIManuallyEdited(),
               onInfoTap: () => showInfoDialog(
                 context,
                 'Body Mass Index (BMI)',
-                'BMI = weight (kg) / height² (m²)\n\nUse the BMI calculator above or enter directly.',
+                'BMI = weight (kg) / height² (m²)\n\nEither enter BMI directly or use Height and Weight fields above.',
               ),
             ),
           ],
@@ -644,6 +653,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   Widget _buildResultSection() {
+    final calculatedWeight = double.tryParse(_flapController.text);
+    final hasResult = calculatedWeight != null && calculatedWeight != 0;
+    
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -665,6 +677,48 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               readOnly: true,
               icon: Icons.scale,
             ),
+            if (hasResult) ...[
+              const SizedBox(height: 12),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final weight50 = calculatedWeight! * 0.5;
+                  final weight60 = calculatedWeight * 0.6;
+                  final weight70 = calculatedWeight * 0.7;
+                  
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '50%: ${weight50.toStringAsFixed(1)} g',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          '60%: ${weight60.toStringAsFixed(1)} g',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          '70%: ${weight70.toStringAsFixed(1)} g',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ],
             const SizedBox(height: 24),
             LayoutBuilder(
               builder: (context, constraints) {
@@ -710,94 +764,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildSuggestedWeightsSection() {
-    final calculatedWeight = double.tryParse(_flapController.text);
-    
-    // Only show if there's a calculated weight
-    if (calculatedWeight == null || calculatedWeight == 0) {
-      return const SizedBox.shrink();
-    }
-
-    final weight50 = calculatedWeight * 0.5;
-    final weight60 = calculatedWeight * 0.6;
-    final weight70 = calculatedWeight * 0.7;
-
-    return Card(
-      child: Column(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.tips_and_updates_outlined, color: Color(0xFF4A90E2)),
-            title: const Text(
-              'Suggested Weights',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-            trailing: IconButton(
-              icon: Icon(_isSuggestedWeightsExpanded ? Icons.expand_less : Icons.expand_more),
-              onPressed: () {
-                setState(() {
-                  _isSuggestedWeightsExpanded = !_isSuggestedWeightsExpanded;
-                });
-              },
-            ),
-            onTap: () {
-              setState(() {
-                _isSuggestedWeightsExpanded = !_isSuggestedWeightsExpanded;
-              });
-            },
-          ),
-          if (_isSuggestedWeightsExpanded)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              child: Column(
-                children: [
-                  const Divider(),
-                  const SizedBox(height: 8),
-                  _buildSuggestedWeightRow('50%', weight50),
-                  const SizedBox(height: 8),
-                  _buildSuggestedWeightRow('60%', weight60),
-                  const SizedBox(height: 8),
-                  _buildSuggestedWeightRow('70%', weight70),
-                ],
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSuggestedWeightRow(String percentage, double weight) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            percentage,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          Text(
-            '${weight.toStringAsFixed(1)} g',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          ),
-        ],
       ),
     );
   }

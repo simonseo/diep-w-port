@@ -12,6 +12,7 @@ class MeasurementInput extends StatefulWidget {
   final TextInputAction? textInputAction;
   final VoidCallback? onFieldSubmitted;
   final FocusNode? focusNode;
+  final ValueChanged<String>? onChanged;
 
   const MeasurementInput({
     super.key,
@@ -25,6 +26,7 @@ class MeasurementInput extends StatefulWidget {
     this.textInputAction,
     this.onFieldSubmitted,
     this.focusNode,
+    this.onChanged,
   });
 
   @override
@@ -98,6 +100,7 @@ class _MeasurementInputState extends State<MeasurementInput> {
           focusNode: widget.focusNode,
           keyboardType: widget.keyboardType ?? const TextInputType.numberWithOptions(decimal: true),
           textInputAction: widget.textInputAction ?? TextInputAction.next,
+          onChanged: widget.onChanged,
           onFieldSubmitted: (_) {
             if (widget.onFieldSubmitted != null) {
               widget.onFieldSubmitted!();
