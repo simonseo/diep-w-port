@@ -55,7 +55,7 @@ class _InlineBMICalculatorState extends State<InlineBMICalculator> {
           ListTile(
             leading: const Icon(Icons.calculate, color: Color(0xFF4A90E2)),
             title: const Text(
-              'Quick BMI Calculator',
+              'BMI Calculator',
               style: TextStyle(fontWeight: FontWeight.w600),
             ),
             subtitle: _calculatedBMI != null
@@ -65,7 +65,7 @@ class _InlineBMICalculatorState extends State<InlineBMICalculator> {
                       fontWeight: FontWeight.w500,
                     ),
                   )
-                : const Text('Tap to calculate BMI'),
+                : null,
             trailing: IconButton(
               icon: Icon(_isExpanded ? Icons.expand_less : Icons.expand_more),
               onPressed: () {

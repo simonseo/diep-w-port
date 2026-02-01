@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/pinch_screen.dart';
-import 'screens/ct_screen.dart';
+import 'screens/calculator_screen.dart';
 import 'screens/about_screen.dart';
 import 'screens/history_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -97,8 +96,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _screens = <Widget>[
-    PinchScreen(),
-    CTScreen(),
+    CalculatorScreen(),
     HistoryScreen(),
     AboutScreen(),
   ];
@@ -118,14 +116,9 @@ class _MainScreenState extends State<MainScreen> {
         onDestinationSelected: _onItemTapped,
         destinations: const <NavigationDestination>[
           NavigationDestination(
-            icon: Icon(Icons.precision_manufacturing_outlined),
-            selectedIcon: Icon(Icons.precision_manufacturing),
-            label: 'Pinch',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.photo_outlined),
-            selectedIcon: Icon(Icons.photo),
-            label: 'CT',
+            icon: Icon(Icons.calculate_outlined),
+            selectedIcon: Icon(Icons.calculate),
+            label: 'Calculator',
           ),
           NavigationDestination(
             icon: Icon(Icons.history_outlined),
