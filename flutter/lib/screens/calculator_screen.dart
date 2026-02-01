@@ -449,7 +449,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               label: 'BMI',
               hint: 'BMI',
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              onFieldSubmitted: () => _immFocus.requestFocus(),
+              onFieldSubmitted: () => _rmmFocus.requestFocus(),
               onChanged: (_) => _onBMIManuallyEdited(),
               onInfoTap: () => showInfoDialog(
                 context,
@@ -480,49 +480,19 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             const SizedBox(height: 16),
             LayoutBuilder(
               builder: (context, constraints) {
-                // Mobile: I full width, then L | R
+                // Mobile: R | L in first row, then I in second row
                 if (constraints.maxWidth < 600) {
                   return Column(
                     children: [
-                      MeasurementInput(
-                        controller: _immController,
-                        focusNode: _immFocus,
-                        label: 'I. mm',
-                        hint: 'Inferior',
-                        onFieldSubmitted: () => _lmmFocus.requestFocus(),
-                        onInfoTap: () => showInfoDialog(
-                          context,
-                          'Inferior Measurement (I mm)',
-                          _getFieldDescription('I'),
-                          imagePath: _getImagePath('I'),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
                       Row(
                         children: [
-                          Expanded(
-                            child: MeasurementInput(
-                              controller: _lmmController,
-                              focusNode: _lmmFocus,
-                              label: 'L. mm',
-                              hint: 'Left',
-                              onFieldSubmitted: () => _rmmFocus.requestFocus(),
-                              onInfoTap: () => showInfoDialog(
-                                context,
-                                'Left Measurement (L mm)',
-                                _getFieldDescription('L'),
-                                imagePath: _getImagePath('L'),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 16),
                           Expanded(
                             child: MeasurementInput(
                               controller: _rmmController,
                               focusNode: _rmmFocus,
                               label: 'R. mm',
                               hint: 'Right',
-                              onFieldSubmitted: () => _hcmFocus.requestFocus(),
+                              onFieldSubmitted: () => _lmmFocus.requestFocus(),
                               onInfoTap: () => showInfoDialog(
                                 context,
                                 'Right Measurement (R mm)',
@@ -531,27 +501,57 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                               ),
                             ),
                           ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: MeasurementInput(
+                              controller: _lmmController,
+                              focusNode: _lmmFocus,
+                              label: 'L. mm',
+                              hint: 'Left',
+                              onFieldSubmitted: () => _immFocus.requestFocus(),
+                              onInfoTap: () => showInfoDialog(
+                                context,
+                                'Left Measurement (L mm)',
+                                _getFieldDescription('L'),
+                                imagePath: _getImagePath('L'),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                    ],
-                  );
-                }
-                
-                // Desktop/Tablet: I | L | R in one row
-                return Row(
-                  children: [
-                    Expanded(
-                      child: MeasurementInput(
+                      const SizedBox(height: 16),
+                      MeasurementInput(
                         controller: _immController,
                         focusNode: _immFocus,
                         label: 'I. mm',
                         hint: 'Inferior',
-                        onFieldSubmitted: () => _lmmFocus.requestFocus(),
+                        onFieldSubmitted: () => _wcmFocus.requestFocus(),
                         onInfoTap: () => showInfoDialog(
                           context,
                           'Inferior Measurement (I mm)',
                           _getFieldDescription('I'),
                           imagePath: _getImagePath('I'),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                
+                // Desktop/Tablet: R | L | I in one row
+                return Row(
+                  children: [
+                    Expanded(
+                      child: MeasurementInput(
+                        controller: _rmmController,
+                        focusNode: _rmmFocus,
+                        label: 'R. mm',
+                        hint: 'Right',
+                        onFieldSubmitted: () => _lmmFocus.requestFocus(),
+                        onInfoTap: () => showInfoDialog(
+                          context,
+                          'Right Measurement (R mm)',
+                          _getFieldDescription('R'),
+                          imagePath: _getImagePath('R'),
                         ),
                       ),
                     ),
@@ -562,7 +562,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         focusNode: _lmmFocus,
                         label: 'L. mm',
                         hint: 'Left',
-                        onFieldSubmitted: () => _rmmFocus.requestFocus(),
+                        onFieldSubmitted: () => _immFocus.requestFocus(),
                         onInfoTap: () => showInfoDialog(
                           context,
                           'Left Measurement (L mm)',
@@ -574,16 +574,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     const SizedBox(width: 16),
                     Expanded(
                       child: MeasurementInput(
-                        controller: _rmmController,
-                        focusNode: _rmmFocus,
-                        label: 'R. mm',
-                        hint: 'Right',
-                        onFieldSubmitted: () => _hcmFocus.requestFocus(),
+                        controller: _immController,
+                        focusNode: _immFocus,
+                        label: 'I. mm',
+                        hint: 'Inferior',
+                        onFieldSubmitted: () => _wcmFocus.requestFocus(),
                         onInfoTap: () => showInfoDialog(
                           context,
-                          'Right Measurement (R mm)',
-                          _getFieldDescription('R'),
-                          imagePath: _getImagePath('R'),
+                          'Inferior Measurement (I mm)',
+                          _getFieldDescription('I'),
+                          imagePath: _getImagePath('I'),
                         ),
                       ),
                     ),

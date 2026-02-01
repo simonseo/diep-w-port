@@ -37677,7 +37677,7 @@ s.toString
 return A.jC(s,"Weight","Enter weight in kilograms for BMI calculation.",null)},
 $S:0}
 A.af2.prototype={
-$0(){return this.a.ch.dt()},
+$0(){return this.a.ax.dt()},
 $S:0}
 A.af1.prototype={
 $1(a){return this.a.a5C()},
@@ -37688,53 +37688,53 @@ s.toString
 return A.jC(s,"Body Mass Index (BMI)","BMI = weight (kg) / height\xb2 (m\xb2)\n\nEither enter BMI directly or use Height and Weight fields above.",null)},
 $S:0}
 A.afn.prototype={
-$2(a,b){var s,r,q="Inferior",p=null
+$2(a,b){var s,r,q=null,p="Inferior"
 if(b.b<600){s=this.a
 r=t.p
-return A.cK(A.b([A.i6(s.w,s.ch,q,p,p,"I. mm",p,new A.afb(s),new A.afc(s,a),!1,p),B.N,A.df(A.b([A.dp(A.i6(s.r,s.ay,"Left",p,p,"L. mm",p,new A.afd(s),new A.aff(s,a),!1,p),1),B.eI,A.dp(A.i6(s.f,s.ax,"Right",p,p,"R. mm",p,new A.afg(s),new A.afh(s,a),!1,p),1)],r),B.M,B.t,B.z)],r),B.M,B.t,B.z)}s=this.a
-return A.df(A.b([A.dp(A.i6(s.w,s.ch,q,p,p,"I. mm",p,new A.afi(s),new A.afj(s,a),!1,p),1),B.eI,A.dp(A.i6(s.r,s.ay,"Left",p,p,"L. mm",p,new A.afk(s),new A.afl(s,a),!1,p),1),B.eI,A.dp(A.i6(s.f,s.ax,"Right",p,p,"R. mm",p,new A.afm(s),new A.afe(s,a),!1,p),1)],t.p),B.M,B.t,B.z)},
+return A.cK(A.b([A.df(A.b([A.dp(A.i6(s.f,s.ax,"Right",q,q,"R. mm",q,new A.afb(s),new A.afc(s,a),!1,q),1),B.eI,A.dp(A.i6(s.r,s.ay,"Left",q,q,"L. mm",q,new A.afd(s),new A.aff(s,a),!1,q),1)],r),B.M,B.t,B.z),B.N,A.i6(s.w,s.ch,p,q,q,"I. mm",q,new A.afg(s),new A.afh(s,a),!1,q)],r),B.M,B.t,B.z)}s=this.a
+return A.df(A.b([A.dp(A.i6(s.f,s.ax,"Right",q,q,"R. mm",q,new A.afi(s),new A.afj(s,a),!1,q),1),B.eI,A.dp(A.i6(s.r,s.ay,"Left",q,q,"L. mm",q,new A.afk(s),new A.afl(s,a),!1,q),1),B.eI,A.dp(A.i6(s.w,s.ch,p,q,q,"I. mm",q,new A.afm(s),new A.afe(s,a),!1,q),1)],t.p),B.M,B.t,B.z)},
 $S:348}
 A.afb.prototype={
 $0(){return this.a.ay.dt()},
 $S:0}
 A.afc.prototype={
 $0(){var s=this.a
-return A.jC(this.b,"Inferior Measurement (I mm)",s.nU("I"),s.nV("I"))},
+return A.jC(this.b,"Right Measurement (R mm)",s.nU("R"),s.nV("R"))},
 $S:0}
 A.afd.prototype={
-$0(){return this.a.ax.dt()},
+$0(){return this.a.ch.dt()},
 $S:0}
 A.aff.prototype={
 $0(){var s=this.a
 return A.jC(this.b,"Left Measurement (L mm)",s.nU("L"),s.nV("L"))},
 $S:0}
 A.afg.prototype={
-$0(){return this.a.db.dt()},
+$0(){return this.a.dx.dt()},
 $S:0}
 A.afh.prototype={
 $0(){var s=this.a
-return A.jC(this.b,"Right Measurement (R mm)",s.nU("R"),s.nV("R"))},
+return A.jC(this.b,"Inferior Measurement (I mm)",s.nU("I"),s.nV("I"))},
 $S:0}
 A.afi.prototype={
 $0(){return this.a.ay.dt()},
 $S:0}
 A.afj.prototype={
 $0(){var s=this.a
-return A.jC(this.b,"Inferior Measurement (I mm)",s.nU("I"),s.nV("I"))},
+return A.jC(this.b,"Right Measurement (R mm)",s.nU("R"),s.nV("R"))},
 $S:0}
 A.afk.prototype={
-$0(){return this.a.ax.dt()},
+$0(){return this.a.ch.dt()},
 $S:0}
 A.afl.prototype={
 $0(){var s=this.a
 return A.jC(this.b,"Left Measurement (L mm)",s.nU("L"),s.nV("L"))},
 $S:0}
 A.afm.prototype={
-$0(){return this.a.db.dt()},
+$0(){return this.a.dx.dt()},
 $S:0}
 A.afe.prototype={
 $0(){var s=this.a
-return A.jC(this.b,"Right Measurement (R mm)",s.nU("R"),s.nV("R"))},
+return A.jC(this.b,"Inferior Measurement (I mm)",s.nU("I"),s.nV("I"))},
 $S:0}
 A.af5.prototype={
 $0(){return this.a.db.dt()},
