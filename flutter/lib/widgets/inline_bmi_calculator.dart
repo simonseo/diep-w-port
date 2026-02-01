@@ -15,6 +15,8 @@ class InlineBMICalculator extends StatefulWidget {
 class _InlineBMICalculatorState extends State<InlineBMICalculator> {
   final TextEditingController _weightController = TextEditingController();
   final TextEditingController _heightController = TextEditingController();
+  final FocusNode _weightFocus = FocusNode();
+  final FocusNode _heightFocus = FocusNode();
   bool _isExpanded = true;
   double? _calculatedBMI;
 
@@ -22,6 +24,8 @@ class _InlineBMICalculatorState extends State<InlineBMICalculator> {
   void dispose() {
     _weightController.dispose();
     _heightController.dispose();
+    _weightFocus.dispose();
+    _heightFocus.dispose();
     super.dispose();
   }
 
@@ -87,6 +91,7 @@ class _InlineBMICalculatorState extends State<InlineBMICalculator> {
                       Expanded(
                         child: TextField(
                           controller: _weightController,
+                          focusNode: _weightFocus,
                           decoration: const InputDecoration(
                             labelText: 'Weight (kg)',
                             border: OutlineInputBorder(),
@@ -98,13 +103,16 @@ class _InlineBMICalculatorState extends State<InlineBMICalculator> {
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: true,
                           ),
+                          textInputAction: TextInputAction.next,
                           onChanged: (_) => _calculateBMI(),
+                          onSubmitted: (_) => _heightFocus.requestFocus(),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: TextField(
                           controller: _heightController,
+                          focusNode: _heightFocus,
                           decoration: const InputDecoration(
                             labelText: 'Height (cm)',
                             border: OutlineInputBorder(),
@@ -116,7 +124,12 @@ class _InlineBMICalculatorState extends State<InlineBMICalculator> {
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: true,
                           ),
+                          textInputAction: TextInputAction.done,
                           onChanged: (_) => _calculateBMI(),
+                          onSubmitted: (_) {
+                            _calculateBMI();
+                            FocusScope.of(context).unfocus();
+                          },
                         ),
                       ),
                     ],
