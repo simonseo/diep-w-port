@@ -37461,7 +37461,7 @@ case 1:return A.K(p,r)}})
 return A.M($async$uh,r)},
 a_g(){this.a6(new A.aeh(this))},
 J(a){var s=this,r=null,q=t.p
-return A.Kt(A.Ws(B.SB),A.L_(new A.b6(B.ac,A.asr(A.cQ(A.b([A.hc(new A.b6(B.ac,A.cQ(A.b([A.anG(A.dP(8),A.a1O("assets/images/figure_new.png",new A.aej(),B.f_,200,r)),B.H,B.Sr,B.ae,B.Sw],q),B.y,B.q,B.w),r),r),B.H,new A.qP(new A.aek(s),r),B.H,A.hc(new A.b6(B.ac,A.cQ(A.b([A.cV(A.b([A.cS(A.fL(s.e,s.Q,"Right",r,r,"R. mm",new A.ael(s),new A.aep(a),!1,r),1),B.dx,A.cS(A.fL(s.w,s.ax,"BMI",r,new A.kD(2,!1,!0),"BMI",new A.aeq(s),new A.aer(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.f,s.as,"Left",r,r,"L. mm",new A.aes(s),new A.aet(a),!1,r),1),B.dx,A.cS(A.fL(s.x,s.ay,"Height",r,r,"H. cm",new A.aeu(s),new A.aev(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.r,s.at,"Inferior",r,r,"I. mm",new A.aew(s),new A.aem(a),!1,r),1),B.dx,A.cS(A.fL(s.y,s.ch,"Width",r,r,"W. cm",s.gHP(),new A.aen(a),!1,B.hD),1)],q),B.y,B.q,B.w),B.eK,A.fL(s.z,r,"Result",B.mz,r,"Flap Weight (g)",r,r,!0,r),B.eK,new A.xm(new A.aeo(s),r)],q),B.y,B.q,B.w),r),r),B.H,B.AN],q),B.bM,B.q,B.w),s.d),r)),r)}}
+return A.Kt(A.Ws(B.SB),A.L_(new A.b6(B.ac,A.asr(A.cQ(A.b([A.hc(new A.b6(B.ac,A.cQ(A.b([A.anG(A.dP(8),A.a1O("assets/images/figure_new.png",new A.aej(),B.f_,200,r)),B.H,B.Sr,B.ae,B.Sw],q),B.y,B.q,B.w),r),r),B.H,new A.qP(new A.aek(s),r),B.H,A.hc(new A.b6(B.ac,A.cQ(A.b([A.cV(A.b([A.cS(A.fL(s.w,s.ax,"BMI",r,new A.kD(2,!1,!0),"BMI",new A.ael(s),new A.aep(a),!1,r),1),B.dx,A.cS(A.fL(s.r,s.at,"Inferior",r,r,"I. mm",new A.aeq(s),new A.aer(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.f,s.as,"Left",r,r,"L. mm",new A.aes(s),new A.aet(a),!1,r),1),B.dx,A.cS(A.fL(s.e,s.Q,"Right",r,r,"R. mm",new A.aeu(s),new A.aev(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.x,s.ay,"Height",r,r,"H. cm",new A.aew(s),new A.aem(a),!1,r),1),B.dx,A.cS(A.fL(s.y,s.ch,"Width",r,r,"W. cm",s.gHP(),new A.aen(a),!1,B.hD),1)],q),B.y,B.q,B.w),B.eK,A.fL(s.z,r,"Result",B.mz,r,"Flap Weight (g)",r,r,!0,r),B.eK,new A.xm(new A.aeo(s),r)],q),B.y,B.q,B.w),r),r),B.H,B.AN],q),B.bM,B.q,B.w),s.d),r)),r)}}
 A.aeg.prototype={
 $0(){this.a.z.seW(0,B.c.a1(this.b,1))},
 $S:0}
@@ -37487,34 +37487,34 @@ A.aei.prototype={
 $0(){this.a.w.seW(0,B.c.a1(this.b,1))},
 $S:0}
 A.ael.prototype={
-$0(){return this.a.ax.dr()},
+$0(){return this.a.at.dr()},
 $S:0}
 A.aep.prototype={
-$0(){return A.iz(this.a,"Right Measurement (R mm)","Right para-umbilical flap thickness measured on CT angiography at 5 cm lateral (right) from the umbilicus.","assets/images/R_CT.png")},
+$0(){return A.iz(this.a,"Body Mass Index (BMI)",u.v,null)},
 $S:0}
 A.aeq.prototype={
 $0(){return this.a.as.dr()},
 $S:0}
 A.aer.prototype={
-$0(){return A.iz(this.a,"Body Mass Index (BMI)",u.v,null)},
+$0(){return A.iz(this.a,"Inferior Measurement (I mm)","Inferior para-umbilical flap thickness measured on CT angiography at 5 cm inferior from the umbilicus.","assets/images/I_CT.png")},
 $S:0}
 A.aes.prototype={
-$0(){return this.a.ay.dr()},
+$0(){return this.a.Q.dr()},
 $S:0}
 A.aet.prototype={
 $0(){return A.iz(this.a,"Left Measurement (L mm)","Left para-umbilical flap thickness measured on CT angiography at 5 cm lateral (left) from the umbilicus.","assets/images/L_CT.png")},
 $S:0}
 A.aeu.prototype={
-$0(){return this.a.at.dr()},
+$0(){return this.a.ay.dr()},
 $S:0}
 A.aev.prototype={
-$0(){return A.iz(this.a,"Flap Height (H)",u.r,null)},
+$0(){return A.iz(this.a,"Right Measurement (R mm)","Right para-umbilical flap thickness measured on CT angiography at 5 cm lateral (right) from the umbilicus.","assets/images/R_CT.png")},
 $S:0}
 A.aew.prototype={
 $0(){return this.a.ch.dr()},
 $S:0}
 A.aem.prototype={
-$0(){return A.iz(this.a,"Inferior Measurement (I mm)","Inferior para-umbilical flap thickness measured on CT angiography at 5 cm inferior from the umbilicus.","assets/images/I_CT.png")},
+$0(){return A.iz(this.a,"Flap Height (H)",u.r,null)},
 $S:0}
 A.aen.prototype={
 $0(){return A.iz(this.a,"Flap Width (W)",u.k,null)},
@@ -37600,7 +37600,7 @@ case 1:return A.K(p,r)}})
 return A.M($async$v5,r)},
 a6N(){this.a6(new A.ail(this))},
 J(a){var s=this,r=null,q=t.p
-return A.Kt(A.Ws(B.Sh),A.L_(new A.b6(B.ac,A.asr(A.cQ(A.b([A.hc(new A.b6(B.ac,A.cQ(A.b([A.anG(A.dP(8),A.a1O("assets/images/figure_new.png",new A.ain(),B.f_,200,r)),B.H,B.Sz,B.ae,B.Sy],q),B.y,B.q,B.w),r),r),B.H,new A.qP(new A.aio(s),r),B.H,A.hc(new A.b6(B.ac,A.cQ(A.b([A.cV(A.b([A.cS(A.fL(s.e,s.Q,"Right",r,r,"R. mm",new A.aip(s),new A.ait(a),!1,r),1),B.dx,A.cS(A.fL(s.w,s.ax,"BMI",r,new A.kD(2,!1,!0),"BMI",new A.aiu(s),new A.aiv(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.f,s.as,"Left",r,r,"L. mm",new A.aiw(s),new A.aix(a),!1,r),1),B.dx,A.cS(A.fL(s.x,s.ay,"Height",r,r,"H. cm",new A.aiy(s),new A.aiz(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.r,s.at,"Inferior",r,r,"I. mm",new A.aiA(s),new A.aiq(a),!1,r),1),B.dx,A.cS(A.fL(s.y,s.ch,"Width",r,r,"W. cm",s.gLq(),new A.air(a),!1,B.hD),1)],q),B.y,B.q,B.w),B.eK,A.fL(s.z,r,"Result",B.mz,r,"Flap Weight (g)",r,r,!0,r),B.eK,new A.xm(new A.ais(s),r)],q),B.y,B.q,B.w),r),r),B.H,B.AO],q),B.bM,B.q,B.w),s.d),r)),r)}}
+return A.Kt(A.Ws(B.Sh),A.L_(new A.b6(B.ac,A.asr(A.cQ(A.b([A.hc(new A.b6(B.ac,A.cQ(A.b([A.anG(A.dP(8),A.a1O("assets/images/figure_new.png",new A.ain(),B.f_,200,r)),B.H,B.Sz,B.ae,B.Sy],q),B.y,B.q,B.w),r),r),B.H,new A.qP(new A.aio(s),r),B.H,A.hc(new A.b6(B.ac,A.cQ(A.b([A.cV(A.b([A.cS(A.fL(s.w,s.ax,"BMI",r,new A.kD(2,!1,!0),"BMI",new A.aip(s),new A.ait(a),!1,r),1),B.dx,A.cS(A.fL(s.r,s.at,"Inferior",r,r,"I. mm",new A.aiu(s),new A.aiv(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.f,s.as,"Left",r,r,"L. mm",new A.aiw(s),new A.aix(a),!1,r),1),B.dx,A.cS(A.fL(s.e,s.Q,"Right",r,r,"R. mm",new A.aiy(s),new A.aiz(a),!1,r),1)],q),B.y,B.q,B.w),B.H,A.cV(A.b([A.cS(A.fL(s.x,s.ay,"Height",r,r,"H. cm",new A.aiA(s),new A.aiq(a),!1,r),1),B.dx,A.cS(A.fL(s.y,s.ch,"Width",r,r,"W. cm",s.gLq(),new A.air(a),!1,B.hD),1)],q),B.y,B.q,B.w),B.eK,A.fL(s.z,r,"Result",B.mz,r,"Flap Weight (g)",r,r,!0,r),B.eK,new A.xm(new A.ais(s),r)],q),B.y,B.q,B.w),r),r),B.H,B.AO],q),B.bM,B.q,B.w),s.d),r)),r)}}
 A.aik.prototype={
 $0(){this.a.z.seW(0,B.c.a1(this.b,1))},
 $S:0}
@@ -37626,34 +37626,34 @@ A.aim.prototype={
 $0(){this.a.w.seW(0,B.c.a1(this.b,1))},
 $S:0}
 A.aip.prototype={
-$0(){return this.a.ax.dr()},
+$0(){return this.a.at.dr()},
 $S:0}
 A.ait.prototype={
-$0(){return A.iz(this.a,"Right Measurement (R mm)","Right para-umbilical flap thickness measured by pinch test. Flap thickness is measured using skin fold caliper at 5 cm lateral (right) from the umbilicus and it is divided by 2.","assets/images/R_pinch.png")},
+$0(){return A.iz(this.a,"Body Mass Index (BMI)",u.v,null)},
 $S:0}
 A.aiu.prototype={
 $0(){return this.a.as.dr()},
 $S:0}
 A.aiv.prototype={
-$0(){return A.iz(this.a,"Body Mass Index (BMI)",u.v,null)},
+$0(){return A.iz(this.a,"Inferior Measurement (I mm)","Inferior para-umbilical flap thickness measured by pinch test. Flap thickness is measured using skin fold caliper at 5 cm inferior from the umbilicus and it is divided by 2.","assets/images/I_pinch.png")},
 $S:0}
 A.aiw.prototype={
-$0(){return this.a.ay.dr()},
+$0(){return this.a.Q.dr()},
 $S:0}
 A.aix.prototype={
 $0(){return A.iz(this.a,"Left Measurement (L mm)","Left para-umbilical flap thickness measured by pinch test. Flap thickness is measured using skin fold caliper at 5 cm lateral (left) from the umbilicus and it is divided by 2.","assets/images/L_pinch.png")},
 $S:0}
 A.aiy.prototype={
-$0(){return this.a.at.dr()},
+$0(){return this.a.ay.dr()},
 $S:0}
 A.aiz.prototype={
-$0(){return A.iz(this.a,"Flap Height (H)",u.r,null)},
+$0(){return A.iz(this.a,"Right Measurement (R mm)","Right para-umbilical flap thickness measured by pinch test. Flap thickness is measured using skin fold caliper at 5 cm lateral (right) from the umbilicus and it is divided by 2.","assets/images/R_pinch.png")},
 $S:0}
 A.aiA.prototype={
 $0(){return this.a.ch.dr()},
 $S:0}
 A.aiq.prototype={
-$0(){return A.iz(this.a,"Inferior Measurement (I mm)","Inferior para-umbilical flap thickness measured by pinch test. Flap thickness is measured using skin fold caliper at 5 cm inferior from the umbilicus and it is divided by 2.","assets/images/I_pinch.png")},
+$0(){return A.iz(this.a,"Flap Height (H)",u.r,null)},
 $S:0}
 A.air.prototype={
 $0(){return A.iz(this.a,"Flap Width (W)",u.k,null)},
