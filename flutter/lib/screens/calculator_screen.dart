@@ -653,9 +653,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   Widget _buildResultSection() {
-    final calculatedWeight = double.tryParse(_flapController.text);
-    final hasResult = calculatedWeight != null && calculatedWeight != 0;
-    
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -677,48 +674,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               readOnly: true,
               icon: Icons.scale,
             ),
-            if (hasResult) ...[
-              const SizedBox(height: 12),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final weight50 = calculatedWeight! * 0.5;
-                  final weight60 = calculatedWeight * 0.6;
-                  final weight70 = calculatedWeight * 0.7;
-                  
-                  return Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          '50%: ${weight50.toStringAsFixed(1)} g',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Theme.of(context).textTheme.bodySmall?.color,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          '60%: ${weight60.toStringAsFixed(1)} g',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Theme.of(context).textTheme.bodySmall?.color,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          '70%: ${weight70.toStringAsFixed(1)} g',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Theme.of(context).textTheme.bodySmall?.color,
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ],
             const SizedBox(height: 24),
             LayoutBuilder(
               builder: (context, constraints) {
